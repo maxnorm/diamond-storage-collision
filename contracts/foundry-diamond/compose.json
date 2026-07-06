@@ -1,0 +1,36 @@
+{
+  "project": "diamond-storage-collision-v2",
+  "compose": "0.0.3",
+  "framework": "foundry",
+
+  "diamonds": {
+    "Diamond": {
+      "contract": "src/Diamond.sol:Diamond",
+      "facets": {
+        "DiamondInspectFacet": {
+          "source": "package",
+          "package": "@perfect-abstractions/compose",
+          "contract": "DiamondInspectFacet"
+        },
+        "DiamondUpgradeFacet": {
+          "source": "package",
+          "package": "@perfect-abstractions/compose",
+          "contract": "DiamondUpgradeFacet"
+        },
+        "CounterFacet": {
+          "source": "local",
+          "contract": "src/facets/CounterFacet.sol:CounterFacet"
+        },
+        "CounterFacetV3": {
+          "source": "local",
+          "contract": "src/facets/CounterFacetV3.sol:CounterFacetV3"
+        }
+      }
+    }
+  },
+
+  "chains": {
+    "local": { "rpc": "http://127.0.0.1:8545", "chainId": 31337 },
+    "sepolia": { "rpc": "${SEPOLIA_RPC_URL}", "chainId": 11155111 }
+  }
+}

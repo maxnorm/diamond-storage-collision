@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.30;
 
-import {Script} from "forge-std/Script.sol";
+import {Script, console} from "forge-std/Script.sol";
 import {CounterFacet} from "../src/facets/CounterFacet.sol";
 import {Diamond} from "../src/Diamond.sol";
 import {DiamondInspectFacet} from "@perfect-abstractions/compose/diamond/DiamondInspectFacet.sol";
 import {DiamondUpgradeFacet} from "@perfect-abstractions/compose/diamond/DiamondUpgradeFacet.sol";
+
 
 /// @title DeployScript — Deploys Diamond with CounterFacetV1
 /// @notice Usage: script/Deploy.s.sol
@@ -21,9 +22,14 @@ contract DeployScript is Script {
         facets[0] = address(counterFacet);
         facets[1] = address(inspectFacet);
         facets[2] = address(upgradeFacet);
-
-        new Diamond(facets, msg.sender);
+        
+        Diamond diamond = new Diamond(facets, msg.sender);
 
         vm.stopBroadcast();
+
+        console.log("CounterFacet:       ", address(counterFacet));
+        console.log("DiamondInspectFacet:", address(inspectFacet));
+        console.log("DiamondUpgradeFacet:", address(upgradeFacet));
+        console.log("Diamond:            ", address(diamond));
     }
 }

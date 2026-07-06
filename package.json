@@ -8,25 +8,46 @@
     "foundry:build": "forge build --root contracts/foundry-diamond",
     "hardhat:build": "npm run build --prefix contracts/hardhat-diamond",
     "build": "npm run foundry:build && npm run hardhat:build",
-
     "foundry:test": "forge test --root contracts/foundry-diamond -vvv",
     "hardhat:test": "npm run test --prefix contracts/hardhat-diamond",
     "test": "npm run foundry:test && npm run hardhat:test",
-
     "foundry:fmt": "forge fmt --root contracts/foundry-diamond",
     "foundry:fmt:check": "forge fmt --check --root contracts/foundry-diamond",
-
     "foundry:deploy": "forge script script/Deploy.s.sol --root contracts/foundry-diamond --broadcast --rpc-url http://127.0.0.1:8545",
     "hardhat:deploy": "npm run deploy --prefix contracts/hardhat-diamond",
-
     "foundry:upgrade:v2": "SCENARIO=v2 forge script script/Upgrade.s.sol --root contracts/foundry-diamond --broadcast --rpc-url http://127.0.0.1:8545",
     "foundry:upgrade:v3": "SCENARIO=v3 forge script script/Upgrade.s.sol --root contracts/foundry-diamond --broadcast --rpc-url http://127.0.0.1:8545",
     "foundry:upgrade:gov": "SCENARIO=gov forge script script/Upgrade.s.sol --root contracts/foundry-diamond --broadcast --rpc-url http://127.0.0.1:8545",
     "foundry:upgrade:token": "SCENARIO=token forge script script/Upgrade.s.sol --root contracts/foundry-diamond --broadcast --rpc-url http://127.0.0.1:8545",
-
     "hardhat:upgrade:v2": "npm run upgrade:v2 --prefix contracts/hardhat-diamond",
     "hardhat:upgrade:v3": "npm run upgrade:v3 --prefix contracts/hardhat-diamond",
     "hardhat:upgrade:gov": "npm run upgrade:gov --prefix contracts/hardhat-diamond",
-    "hardhat:upgrade:token": "npm run upgrade:token --prefix contracts/hardhat-diamond"
+    "hardhat:upgrade:token": "npm run upgrade:token --prefix contracts/hardhat-diamond",
+    "foundry:validate-storage": "./scripts/test-local.sh"
+  },
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxnorm/diamond-storage-collision.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxnorm/diamond-storage-collision/issues"
+  },
+  "homepage": "https://github.com/maxnorm/diamond-storage-collision#readme",
+  "dependencies": {
+    "evmole": "^0.8.4",
+    "sevm": "^0.7.4",
+    "viem": "^2.52.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   }
 }
